@@ -9,7 +9,7 @@ export default function booksReducer(state = initialState, action) {
     case a.ADD_BOOK:
       return [...state, payload]
     case a.DELETE_BOOK:
-      return []
+      return state.filter((book) => book.id !== payload)
     case a.TOGGLE_FAVORITE:
       return
     default:
