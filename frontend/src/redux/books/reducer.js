@@ -11,7 +11,9 @@ export default function booksReducer(state = initialState, action) {
     case a.DELETE_BOOK:
       return state.filter((book) => book.id !== payload)
     case a.TOGGLE_FAVORITE:
-      return
+      return state.map((book) =>
+        book.id === payload ? {...book, isFavorite: !book.isFavorite} : book
+      )
     default:
       return state
   }
