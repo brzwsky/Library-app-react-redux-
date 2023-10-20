@@ -1,25 +1,32 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {
   setTitleFilter,
-	setAuthorFilter,
+  setAuthorFilter,
   selectTitleFilter,
-	selectAuthorFilter,
+  selectAuthorFilter,
+  setToggleFilter,
   resetFilters,
+  selectToggleFilter,
 } from '../../redux/slices/filterSlice'
 import './Filter.css'
 
 function Filter() {
   const dispatch = useDispatch()
   const titleFilter = useSelector(selectTitleFilter)
-	const authorFilter = useSelector(selectAuthorFilter)
+  const authorFilter = useSelector(selectAuthorFilter)
+  const onlyToggleFilter = useSelector(selectToggleFilter)
 
   const handleTitleFilterChange = (e) => {
     dispatch(setTitleFilter(e.target.value))
   }
 
-	const handleAuthorFilterChange = (e) => {
-		dispatch(setAuthorFilter(e.target.value))
-	}
+  const handleAuthorFilterChange = (e) => {
+    dispatch(setAuthorFilter(e.target.value))
+  }
+
+  const handleToggleFavorite = (e) => {
+    dispatch(setToggleFilter())
+  }
 
   const handleResetTitleFilter = () => {
     dispatch(resetFilters())
@@ -36,7 +43,7 @@ function Filter() {
             placeholder="Filter by title.."
           />
         </div>
-				<div className="filter-group">
+        <div className="filter-group">
           <input
             onChange={handleAuthorFilterChange}
             value={authorFilter}
@@ -44,7 +51,19 @@ function Filter() {
             placeholder="Filter by author.."
           />
         </div>
-        <button type="button" onClick={handleResetTitleFilter}>Reset Filters</button>
+        <div className="filter-group">
+          <label>
+            <input
+              onChange={handleToggleFavorite}
+              checked={onlyToggleFilter}
+              type="checkbox"
+            />
+						Only Favorite
+          </label>
+        </div>
+        <button type="button" onClick={handleResetTitleFilter}>
+          Reset Filters
+        </button>
       </div>
     </div>
   )
