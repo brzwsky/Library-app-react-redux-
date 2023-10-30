@@ -39,6 +39,7 @@ export default function BookList() {
       return text
     }
     const regex = new RegExp(`(${filter})`, 'gi')
+		
     return text.split(regex).map((substring, index) => {
       if (substring.toLowerCase() === filter.toLowerCase()) {
         return (
@@ -62,7 +63,7 @@ export default function BookList() {
             <li key={book.id}>
               <div className="book-info">
                 {++index}. {highlightMatch(book.title, titleFilter)} by{' '}
-                <strong>{highlightMatch(book.author, authorFilter)}</strong>
+                <strong>{highlightMatch(book.author, authorFilter)}</strong> ({book.source})
               </div>
               <div className="book-actions">
                 <span onClick={() => handleToggleFavorite(book.id)}>
