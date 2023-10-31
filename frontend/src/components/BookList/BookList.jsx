@@ -23,7 +23,7 @@ export default function BookList() {
     return dispatch(deleteBook(id))
   }
 
-  const filteredBooks = books.filter((book) => {
+  const filteredBooks = books.books.filter((book) => {
     const matchesTitle = book.title
       .toLowerCase()
       .includes(titleFilter.toLowerCase())
