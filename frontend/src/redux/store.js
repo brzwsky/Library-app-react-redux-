@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     books: booksReducer,
     filter: filterReducer,
-		error:errorReducer,
+    error: errorReducer,
   },
 })
 

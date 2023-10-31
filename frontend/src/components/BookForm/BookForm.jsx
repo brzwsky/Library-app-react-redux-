@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {addBook, fetchBook} from '../../redux/slices/booksSlices'
+import {setError} from '../../redux/slices/errorSlice'
 import {createBookWithID} from '../../utils/createBookWithID'
 import booksData from '../../data/books.json'
 import './BookForm.css'
@@ -26,7 +27,7 @@ function BookForm() {
       setTitle('')
       setAuthor('')
     }
-    return ''
+    dispatch(setError('You should fill title and author first!'))
   }
 
   const handleAddRAndomBookViaAPI = () => {
