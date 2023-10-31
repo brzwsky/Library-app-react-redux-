@@ -26,12 +26,11 @@ function BookForm() {
 
       setTitle('')
       setAuthor('')
-    }
-    dispatch(setError('You should fill title and author first!'))
+    } else dispatch(setError('You should fill title and author first!'))
   }
 
   const handleAddRAndomBookViaAPI = () => {
-    dispatch(fetchBook())
+    dispatch(fetchBook('http://localhost:4000/random-book'))
   }
 
   return (
